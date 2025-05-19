@@ -6,8 +6,8 @@ import DailyForecast from "./components/DailyForecast";
 
 function App() {
   const API_URL =
-    "https://api.open-meteo.com/v1/forecast?latitude=37.566&longitude=126.9784&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max&timezone=Asia%2FTokyo&forecast_days=7";
-
+    "https://api.open-meteo.com/v1/forecast?latitude=37.566&longitude=126.9784&hourly=temperature_2m,weathercode&daily=weather_code,temperature_2m_min,temperature_2m_max&timezone=Asia%2FSeoul&forecast_days=7"
+    
   const [weatherData, setWeatherData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -15,6 +15,7 @@ function App() {
     fetch(API_URL)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setWeatherData(data);
         setIsLoading(false);
       })
